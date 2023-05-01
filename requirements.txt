@@ -3,4 +3,4 @@ webdriver-manager
 selenium
 playwright
 requests
-protobuff=3.20.0
+protobuf
