@@ -4,9 +4,14 @@ on: push
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Install Gauge
+        run: |
+          wget https://downloads.gauge.org/stable | sh
+          export PATH=$PATH:$HOME/.gauge/bin
 
     - name: Install dependencies
       run: |
