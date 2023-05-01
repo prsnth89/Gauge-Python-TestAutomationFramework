@@ -56,8 +56,8 @@ class BrowserFactory:
         #self._page_set_viewport_size({'width':get_monitors()[0].width, 'height':get_monitors()[0].height})
 
     def quit_playwright_browser(self):
-        self._browser.close()
         self._context.close()
+        self._browser.close()
         self.stop_playwright_engine()
 
     def stop_playwright_engine(self):

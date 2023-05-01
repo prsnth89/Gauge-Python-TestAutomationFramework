@@ -1,6 +1,9 @@
 {
   "Language": "python",
   "Plugins": [
-    "html-report"
-  ]
+    "html-report",
+    "flash",
+    "spectacle"
+  ],
+  "EnvironmentDir": ""
 }

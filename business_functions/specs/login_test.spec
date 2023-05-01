@@ -1,7 +1,7 @@
-#Login scenario
+# Login scenario
 ================
 
-#Test Login
+## Test Login
 -----------
 * Login to sauce demo page
 * Enter "standard_user" and "secret_sauce"

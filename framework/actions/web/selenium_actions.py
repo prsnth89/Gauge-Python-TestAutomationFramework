@@ -52,7 +52,7 @@ class SeleniumActions(IWeb, BrowserFactory):
     
     def verify_title(self, text_to_verify):
         print("title----",self._driver.title)
-        assert self._driver.title.strip().__contains__(text_to_verify), "failed to verify title"
+        assert self._driver.current_url.strip().__contains__(text_to_verify), "failed to verify title"
    
     def take_screenshot(self, path):
         image =self._driver.get_screenshot_as_png()

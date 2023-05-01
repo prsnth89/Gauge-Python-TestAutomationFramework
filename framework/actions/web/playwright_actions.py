@@ -5,6 +5,7 @@ from multipledispatch import dispatch
 from time import time
 from uuid import uuid1
 import os
+from framework.locators.locator import Locator
 
 class PlayWrightActions(IWeb,BrowserFactory):
 
@@ -12,11 +13,11 @@ class PlayWrightActions(IWeb,BrowserFactory):
 
     def refactor(self, locator):
         match locator[0]:
-            case locator.id:
+            case Locator.id:
                 return "[id="+locator[1]+"]"
-            case locator.name:
+            case Locator.name:
                 return "[name="+locator[1]+"]"
-            case locator.class_name:
+            case Locator.clss_name:
                 return "[class="+locator[1]+"]"
             case _:
                 return locator
@@ -47,16 +48,24 @@ class PlayWrightActions(IWeb,BrowserFactory):
         self._element.fill(test_data)
         return self
     
-    @dispatch
+    @dispatch(tuple)
     def find(self, locator):
         self._element=self._page.locator(self.refactor(locator))
+        return self
+    
+    @dispatch(tuple,str)
+    def find(self, locator,timeout):
+        if not self.wait_for(locator,int(timeout)):
+            assert False, "Element not found"
+        self._element=self._page.locator(self.refactor(locator))
+        return self
 
     def wait_time(self, second):
         time.sleep(second)
 
     def verify_title(self, text_to_verify):
-        print("title----",self._page.url)
-        assert self._page.url__contains__(text_to_verify)
+        print("title-------",self._page.url)
+        assert self._page.url.__contains__(text_to_verify)
 
     def take_screenshot(self, path):
         image =self._page.screenshot()

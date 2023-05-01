@@ -7,7 +7,7 @@ from framework.interface.iweb import IWeb
 class LoginPage:
     iWeb: IWeb
     def __init__(self):
-        self.iWeb=data.spec.iweb
+        self.iWeb=data.scenario.iweb
 
     def login(self, user_name, password):
         self.iWeb.find(LoginPageObjects.txtUsername).type(user_name)

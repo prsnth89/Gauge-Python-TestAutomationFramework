@@ -4,5 +4,9 @@
         "*.cpt": "gauge"
     },
     "files.autoSave": "afterDelay",
-    "files.autoSaveDelay": 500
+    "files.autoSaveDelay": 500,
+    "files.exclude": {
+        "**/__pycache__": true
+    }
+    
 }
