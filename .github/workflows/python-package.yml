@@ -12,7 +12,10 @@ jobs:
       run: |
           wget https://downloads.gauge.org/stable | sh
           export PATH=$PATH:$HOME/.gauge/bin
-          
+          sudo apt-get update
+          sudo apt-get install gauge
+          echo gauge --version
+        
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
