@@ -5,20 +5,22 @@ on: push
 jobs:
   test:
     runs-on: windows-latest
+    
+    
     steps:
+    -name: Checkout code
     - uses: actions/checkout@v2
     
     - name: Install Gauge
         run: |
-          wget https://downloads.gauge.org/stable | sh
-          export PATH=$PATH:$HOME/.gauge/bin
+          Invoke-WebRequest -Uri 'https://downloads.gauge.org/stable' -OutFile 'gauge.exe'
+          Start-Process -FilePath '.\gauge.exe' -ArgumentList '/S' -Wait
+          $env:Path += ';C:\Program Files\Gauge\bin'
 
     - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        gauge install python
-        pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        run: |
+          gauge install python
+          pip install -r requirements.txt
 
     - name: Run tests
       run: gauge run business_functions/specs/
