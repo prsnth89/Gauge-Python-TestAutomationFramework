@@ -1,31 +1,25 @@
-name: Gauge Pipeline
+name: Gauge Test
 
-on: push
+on: [push]
 
 jobs:
   build:
-   runs-on: windows-latest
-     
+    runs-on: windows-latest
+
     steps:
-    -name: Checkout code
-    - uses: actions/checkout@v2
-    
-    - name: Install Gauge
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Gauge
         run: |
           Invoke-WebRequest -Uri 'https://downloads.gauge.org/stable' -OutFile 'gauge.exe'
           Start-Process -FilePath '.\gauge.exe' -ArgumentList '/S' -Wait
           $env:Path += ';C:\Program Files\Gauge\bin'
 
-    - name: Install dependencies
+      - name: Install dependencies
         run: |
           gauge install python
           pip install -r requirements.txt
 
-    - name: Run tests
-      run: gauge run business_functions/specs/
-
-    - name: Upload test results
-      uses: actions/upload-artifact@v2
-      with:
-        name: test-results
-        path: reports/
+      - name: Run tests
+        run: gauge run business_functions/specs
