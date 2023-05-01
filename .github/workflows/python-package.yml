@@ -4,15 +4,21 @@ on: push
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Install Gauge
+        run: |
+          wget https://downloads.gauge.org/stable | sh
+          export PATH=$PATH:$HOME/.gauge/bin
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        gauge install python
+        pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        
 
     - name: Run tests
       run: gauge run business_functions/specs/
