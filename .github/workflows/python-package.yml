@@ -10,8 +10,11 @@ jobs:
 
     - name: Install Gauge
       run: |
-         sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 023EDB0B && echo deb https://dl.bintray.com/gauge/gauge-deb nightly main | sudo tee -a /etc/apt/sources.list && sudo apt-get update && sudo apt-get install gauge
-
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 023EDB0B
+          echo deb https://downloads.gauge.org/stable apt/ | sudo tee -a /etc/apt/sources.list.d/gauge.list
+          sudo apt-get update
+          sudo apt-get install gauge
+          
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
