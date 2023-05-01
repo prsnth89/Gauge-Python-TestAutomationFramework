@@ -10,10 +10,8 @@ jobs:
 
     - name: Install Gauge
       run: |
-          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 023EDB0B
-          echo deb https://downloads.gauge.org/stable/ | sudo tee -a /etc/apt/sources.list.d/gauge.list
-          sudo apt-get update
-          sudo apt-get install gauge
+          wget https://downloads.gauge.org/stable | sh
+          export PATH=$PATH:$HOME/.gauge/bin
           
     - name: Install dependencies
       run: |
