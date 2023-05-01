@@ -1,14 +1,13 @@
 # Login scenario
 ================
 
+## Test Login2
+-----------------------
    |user_name    |password    |
    |-------------|------------|
    |std          |std1        |
    |test         |test2       |
    |standard_user|secret_sauce|
-
-## Test Login2
------------------------
 
 * Login to sauce demo page
 * Enter <user_name> and <password>
