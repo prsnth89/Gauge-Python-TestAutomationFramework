@@ -3,7 +3,7 @@ name: Gauge Pipeline
 on: push
 
 jobs:
-  test:
+  build:
     runs-on: windows-latest
     
     
