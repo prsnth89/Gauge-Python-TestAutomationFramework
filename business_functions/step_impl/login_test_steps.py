@@ -23,4 +23,5 @@ def click_login_to_sauce_demo_page():
 def verify_if_the_page_got_loaded_successfully():
     print("verify page ")
     home_page=HomePage()
+    home_page.wait_time(3)
     home_page.verify_home_page_loaded("https://www.saucedemo.com/inventory.html")

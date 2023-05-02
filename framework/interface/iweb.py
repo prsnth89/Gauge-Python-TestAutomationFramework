@@ -43,3 +43,7 @@ class IWeb:
     @abstractmethod
     def verify_title(self, text_to_verify):
         NotImplementedError
+
+    @abstractmethod
+    def wait_time(self,seconds):
+        NotImplementedError

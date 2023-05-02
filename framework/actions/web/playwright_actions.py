@@ -2,7 +2,7 @@ from framework.client_factory.browser_factory import BrowserFactory
 from framework.interface.iweb import IWeb
 from playwright.async_api import BrowserContext,Page, Route
 from multipledispatch import dispatch
-from time import time
+import time
 from uuid import uuid1
 import os
 from framework.locators.locator import Locator

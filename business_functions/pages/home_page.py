@@ -9,3 +9,6 @@ class HomePage:
     def verify_home_page_loaded(self,text_to_verify):
         self.iWeb.verify_title(text_to_verify)
 
+    def wait_time(self,seconds):
+        self.iWeb.wait_time(seconds)
+

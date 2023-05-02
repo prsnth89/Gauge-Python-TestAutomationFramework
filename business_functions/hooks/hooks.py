@@ -29,7 +29,7 @@ class Hooks:
 
     @after_step
     def after_step(context):
-        path = "\html-report\demo\\features\specs"
+        #path = "\html-report\demo\features\specs"
         print("Step Name is - ", context._ExecutionContext__step.text)
         print("Failing status is - ", context._ExecutionContext__step._Step__is_failing)
        
