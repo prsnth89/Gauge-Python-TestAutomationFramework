@@ -29,7 +29,7 @@ def verify_if_the_page_got_loaded_successfully():
 
 @step("URL of the current page")
 def url_of_the_current_browser():
-    print("------current url-------")
+    pass
 
 @step("Print the current test")
 def print_the_current_test():
