@@ -20,3 +20,9 @@ tags: logintest
 * Click Login to sauce demo page
 * URL of the current page
 * Verify if the page got loaded successfully
+
+## Multiple Tests2
+-----------------------
+tags: LoginTest2
+* Print the current test
+* Login to sauce demo page
