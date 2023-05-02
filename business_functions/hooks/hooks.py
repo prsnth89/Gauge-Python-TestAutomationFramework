@@ -10,6 +10,8 @@ browserName = os.getenv('browserName')
 headless = os.getenv('headless')
 tool_type=os.getenv('toolType')
 url=os.getenv('webBaseURL')
+os.environ["GAUGE_LOG_LEVEL"] = "ERROR"
+
 
 class Hooks:
  

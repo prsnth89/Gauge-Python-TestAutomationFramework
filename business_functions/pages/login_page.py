@@ -13,4 +13,3 @@ class LoginPage:
         self.iWeb.find(LoginPageObjects.txtUsername).type(user_name)
         self.iWeb.find(LoginPageObjects.txtPassword).type(password)
         self.iWeb.find(LoginPageObjects.btnLogin).click()
-

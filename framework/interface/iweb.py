@@ -47,3 +47,8 @@ class IWeb:
     @abstractmethod
     def wait_time(self,seconds):
         NotImplementedError
+
+    @abstractmethod
+    def get_current_url(self):
+        NotImplementedError
+        return self

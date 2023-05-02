@@ -60,3 +60,6 @@ class SeleniumActions(IWeb, BrowserFactory):
         file=open(file_name,"wb")
         file.write(image)
         return os.path.basename(file_name)
+    
+    def get_current_url(self):
+        return self._driver.current_url
