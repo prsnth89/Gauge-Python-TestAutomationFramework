@@ -1,11 +1,14 @@
 class Fibonacci:
 
     def print_fibonacci(n):
-        a,b=0,1
+        n1,n2=0,1
+        n3=None
 
         for i in range(n):
-            print(a,end=" ")
-            a,b=b, a+b
+            n3=n1+n2
+            n1=n2
+            n2=n3
+            print(n3,end=" ")
 
 #Fibonacci.print_fibonacci(10)
 
