@@ -10,7 +10,7 @@ class Fibonacci:
             n2=n3
             print(n3,end=" ")
 
-#Fibonacci.print_fibonacci(10)
+Fibonacci.print_fibonacci(5)
 
 class Factorial:
 
