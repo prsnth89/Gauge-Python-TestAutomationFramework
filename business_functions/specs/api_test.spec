@@ -5,4 +5,4 @@
 -----------------------
 
 * Get the weather
-* Validate response code "201"
+* Validate response code "200"

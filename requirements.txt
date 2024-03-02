@@ -4,3 +4,7 @@ selenium
 playwright
 requests
 protobuf
+spark
+flask
+locust
+flasgger
