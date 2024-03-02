@@ -2,6 +2,7 @@ from locust import HttpUser,task,between
 
 class PerfTest(HttpUser):
     wait_time=between(1,5)
+    
     @task
     def run_test(self):
         list_of_page=self.client.get(url="https://reqres.in/api/users?page=2")
