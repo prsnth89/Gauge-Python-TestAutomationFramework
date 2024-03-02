@@ -14,7 +14,7 @@ def get_the_weather():
     test_id={}
     for data in all_data:
         print(data)
-        test_id.(data.get('id'),data.get('email'))
+        test_id(data.get('id'),data.get('email'))
     print(test_id)
 
 @step("Validate response code <status_code>")

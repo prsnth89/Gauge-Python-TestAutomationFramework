@@ -20,5 +20,10 @@ To generate flash report open browser and paste url
     Add port number in default env file (FLASH_SERVER_PORT=1443)
     Flash report URL - http://127.0.0.1:1443/
 
+To run performance test execute below powershell
+ .\framework\perf_test\run_perf.ps1
+
+ 
+
 
 

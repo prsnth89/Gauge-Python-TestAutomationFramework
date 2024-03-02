@@ -1,4 +1,6 @@
-#Dictionaries are collections of key-value pairs. They are unordered, mutable, and can contain elements of different data types. Keys don’t allow duplicate
+#Dictionaries are collections of key-value pairs. 
+#They are unordered, mutable, and can contain elements of different data types. 
+#Keys don’t allow duplicate
 
 test_no=dict()
 test_no[1]="one"
