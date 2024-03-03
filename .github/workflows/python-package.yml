@@ -14,7 +14,7 @@ jobs:
         run: |
           wget -O gauge_installer.sh https://downloads.gauge.org/stable 
           sh gauge_installer.sh
-          export PATH=$PATH:$HOME/.gauge/bin
+          export PATH="${HOME}/.gauge/bin:${PATH}"
 
       - name: Install dependencies
         run: |
