@@ -10,7 +10,8 @@ jobs:
     
     - name: Install Gauge
         run: |
-          wget https://downloads.gauge.org/stable | sh
+          wget https://downloads.gauge.org/stable 
+          sh gauge_installer.sh
           export PATH=$PATH:$HOME/.gauge/bin
 
     - name: Install dependencies
@@ -18,7 +19,7 @@ jobs:
         python -m pip install --upgrade pip
         gauge install python
         pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt;
+        pip install -r requirements.txt
 
     - name: Run tests
       run: gauge run business_functions/specs/
