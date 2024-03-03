@@ -15,6 +15,11 @@ jobs:
           wget -O gauge_installer.sh https://downloads.gauge.org/stable 
           sh gauge_installer.sh
           export PATH="${HOME}/.gauge/bin:${PATH}"
+          
+      - name: Print Gauge Version
+        run: |
+          gauge --version
+          python --version
 
       - name: Install dependencies
         run: |
@@ -22,6 +27,8 @@ jobs:
           gauge install python
           pip install flake8 pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          playwright install
+          
 
       - name: Run tests
         run: gauge run business_functions/specs/
