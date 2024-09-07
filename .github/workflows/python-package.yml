@@ -17,31 +17,36 @@ jobs:
           iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
         shell: powershell
 
-      - name: Install Gauge
-        run: choco install gauge -y --no-progress
+      - name: Install Gauge, Python, and Other Tools
+        run: |
+          choco install gauge python flake8 pytest -y --no-progress
         shell: powershell
 
-      - name: Add Gauge to PATH
+      - name: Add Python to PATH
         run: |
-          $env:PATH += ";C:\Program Files\Gauge\bin"
+          $env:PATH += ";C:\Python39\Scripts;C:\Python39"
           echo "PATH=$env:PATH" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8
         shell: powershell
 
-      - name: Print Gauge Version
+      - name: Print Versions
         run: |
           gauge --version
           python --version
+          flake8 --version
+          pytest --version
         shell: powershell
 
-      - name: Install dependencies
+      - name: Install Gauge Python Plugin and Other Dependencies
         run: |
-          python -m pip install --upgrade pip
           gauge install python
-          pip install flake8 pytest
           pip install -r requirements.txt
           playwright install
         shell: powershell
           
+      - name: Wait before running tests
+        run: Start-Sleep -Seconds 10
+        shell: powershell
+
       - name: Run tests
         run: gauge run ./business_functions/specs_api/
         shell: powershell
