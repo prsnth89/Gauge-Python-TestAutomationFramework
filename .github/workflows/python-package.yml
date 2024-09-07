@@ -19,7 +19,7 @@ jobs:
 
       - name: Install Gauge, Python, and Other Tools
         run: |
-          choco install gauge python flake8 pytest -y --no-progress
+          choco install gauge python -y --no-progress
         shell: powershell
 
       - name: Add Python to PATH
@@ -32,14 +32,14 @@ jobs:
         run: |
           gauge --version
           python --version
-          flake8 --version
-          pytest --version
         shell: powershell
 
       - name: Install Gauge Python Plugin and Other Dependencies
         run: |
-          gauge install python
+          python -m pip install --upgrade pip
+          pip install flake8 pytest
           pip install -r requirements.txt
+          gauge install python
           playwright install
         shell: powershell
           
