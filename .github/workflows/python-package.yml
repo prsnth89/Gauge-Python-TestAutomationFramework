@@ -52,12 +52,8 @@ jobs:
 
       - name: Set Gauge Environment Variables
         run: |
-          echo "GAUGE_HOST=10.0.0.1" >> $env:GITHUB_ENV
+          echo "GAUGE_HOST=localhost" >> $env:GITHUB_ENV
           echo "GAUGE_PORT=6000" >> $env:GITHUB_ENV
-        shell: powershell
-        
-      - name: Debug Network Ports
-        run: netstat -a -n | findstr 1100
         shell: powershell
 
       - name: Wait before running tests
