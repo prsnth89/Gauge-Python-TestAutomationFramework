@@ -5,16 +5,17 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
         
       - name: Install Gauge
         run: |
-          wget -O gauge_installer.sh https://downloads.gauge.org/stable 
-          sh gauge_installer.sh
-          export PATH="${HOME}/.gauge/bin:${PATH}"
+         Invoke-WebRequest -Uri https://downloads.gauge.org/stable -OutFile stable.zip
+         Expand-Archive -Path stable.zip -DestinationPath $env:USERPROFILE\gauge
+         $env:PATH += ";$env:USERPROFILE\gauge"
+        shell: powershell
           
       - name: Print Gauge Version
         run: |
@@ -26,10 +27,9 @@ jobs:
           python -m pip install --upgrade pip
           gauge install python
           pip install flake8 pytest
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install -r requirements.txt
           playwright install
           
-
       - name: Run tests
         run: gauge run ./business_functions/specs_api/
 
