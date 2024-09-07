@@ -22,13 +22,15 @@ jobs:
           choco install gauge python -y --no-progress
         shell: powershell
 
-      - name: Add Python to PATH
+      - name: Add Gauge and Python to PATH
         run: |
-          $env:PATH += ";C:\Python39\Scripts;C:\Python39"
+          $gaugePath = "C:\Program Files\Gauge\bin"
+          $pythonPath = "C:\Python39\Scripts"
+          $env:PATH += ";$gaugePath;$pythonPath"
           echo "PATH=$env:PATH" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8
         shell: powershell
 
-      - name: Print Versions
+      - name: Verify Gauge and Python Installation
         run: |
           gauge --version
           python --version
@@ -39,7 +41,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install flake8 pytest
           pip install -r requirements.txt
-          gauge install python
           playwright install
         shell: powershell
           
