@@ -25,4 +25,3 @@ To run performance test execute below powershell
 
 
 Framework Flow chart
-FlowChart.drawio.png
