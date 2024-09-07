@@ -43,7 +43,7 @@ jobs:
           pip install -r requirements.txt
           playwright install
         shell: powershell
-          
+
       - name: Wait before running tests
         run: Start-Sleep -Seconds 10
         shell: powershell
@@ -58,3 +58,7 @@ jobs:
         with:
           name: test-results
           path: reports/
+
+      - name: Debug Network Ports
+        run: netstat -a -n | findstr 1100
+        shell: powershell
