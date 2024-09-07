@@ -9,18 +9,23 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        
+
       - name: Install Gauge
         run: |
-         Invoke-WebRequest -Uri https://downloads.gauge.org/stable -OutFile stable.zip
-         Expand-Archive -Path stable.zip -DestinationPath $env:USERPROFILE\gauge
-         $env:PATH += ";$env:USERPROFILE\gauge"
+          Invoke-WebRequest -Uri https://downloads.gauge.org/stable -OutFile stable.exe
+          Start-Process -FilePath ./stable.exe -ArgumentList "/silent" -Wait
+          $env:PATH += ";$env:ProgramFiles\Gauge\bin"
+        shell: powershell
+
+      - name: Print Environment Variables
+        run: Get-ChildItem Env:
         shell: powershell
           
       - name: Print Gauge Version
         run: |
           gauge --version
           python --version
+        shell: powershell
 
       - name: Install dependencies
         run: |
@@ -29,11 +34,14 @@ jobs:
           pip install flake8 pytest
           pip install -r requirements.txt
           playwright install
+        shell: powershell
           
       - name: Run tests
         run: gauge run ./business_functions/specs_api/
+        shell: powershell
 
       - name: Upload test results
+        if: always() # Ensure this step runs even if previous steps fail
         uses: actions/upload-artifact@v2
         with:
           name: test-results
