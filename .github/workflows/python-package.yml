@@ -17,7 +17,7 @@ jobs:
           iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
         shell: powershell
 
-      - name: Install Gauge, Python, and Other Tools
+      - name: Install Gauge and Python
         run: |
           choco install gauge python -y --no-progress
         shell: powershell
@@ -34,7 +34,7 @@ jobs:
           python --version
         shell: powershell
 
-      - name: Install Gauge Python Plugin and Other Dependencies
+      - name: Install Python Packages
         run: |
           python -m pip install --upgrade pip
           pip install flake8 pytest
