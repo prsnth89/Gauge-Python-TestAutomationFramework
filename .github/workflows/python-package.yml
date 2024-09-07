@@ -45,11 +45,20 @@ jobs:
           playwright install
         shell: powershell
 
-      - name: Set Gauge Port
+      - name: Check Runner IP Address
         run: |
-          echo "GAUGE_PORT=1101" >> $env:GITHUB_ENV
-        shell: powershell
+          curl ifconfig.me
+        shell: bash
 
+      - name: Set Gauge Environment Variables
+        run: |
+          echo "GAUGE_HOST=10.0.0.1" >> $env:GITHUB_ENV
+          echo "GAUGE_PORT=6000" >> $env:GITHUB_ENV
+        shell: powershell
+        
+      - name: Debug Network Ports
+        run: netstat -a -n | findstr 1100
+        shell: powershell
 
       - name: Wait before running tests
         run: Start-Sleep -Seconds 10
