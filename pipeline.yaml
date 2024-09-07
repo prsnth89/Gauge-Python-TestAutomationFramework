@@ -8,11 +8,18 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+    # - name: Install Gauge
+    #     run: |
+    #       wget https://downloads.gauge.org/stable 
+    #       sh stable.sh
+    #       export PATH=$PATH:$HOME/.gauge/bin
+
     - name: Install Gauge
-        run: |
-          wget https://downloads.gauge.org/stable 
-          sh stable.sh
-          export PATH=$PATH:$HOME/.gauge/bin
+      run: |
+        Invoke-WebRequest -Uri https://downloads.gauge.org/stable -OutFile stable.zip
+        Expand-Archive -Path stable.zip -DestinationPath $env:USERPROFILE\gauge
+        $env:PATH += ";$env:USERPROFILE\gauge"
+      shell: powershell
 
     - name: Install dependencies
       run: |
@@ -25,6 +32,7 @@ jobs:
       run: gauge run business_functions/specs_api/
 
     - name: Upload test results
+      if: always()  # Ensure this step runs even if previous steps fail
       uses: actions/upload-artifact@v2
       with:
         name: test-results

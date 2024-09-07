@@ -3,8 +3,8 @@ from framework.actions.api.rest_actions import RestActions
 
 rest_action=None
 
-@step("Get the weather")
-def get_the_weather():
+@step("Get the personal detail")
+def get_the_personal_detail():
     global rest_action
     rest_action=RestActions()
     rest_action.get_request(url="https://reqres.in/api/users?page=2")
@@ -23,8 +23,7 @@ def get_the_weather():
         new_employee_list.append(employee_tuple)
     print(new_employee_list)
 
-      
-
+    
 
 @step("Validate response code <status_code>")
 def validate_response_code(status_code):

@@ -12,7 +12,7 @@ tags: test
 
 ## Test Login Invalid
 ---------------------
-tags: test
+tags: testinvalid
 
 * Login to sauce demo page
 * Enter "standard_user" and "secret_sauce1"

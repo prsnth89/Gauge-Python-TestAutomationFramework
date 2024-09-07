@@ -1,8 +1,10 @@
-# Get Weather
-==============
+# Get Personal Details
+======================
 
-## Get the current weather
------------------------
+## Get the personal details of a person
+----------------------------------------
 
-* Get the weather
+tags: apitest
+
+* Get the personal detail
 * Validate response code "200"
