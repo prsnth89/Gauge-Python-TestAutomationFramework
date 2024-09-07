@@ -22,7 +22,7 @@ class Hooks:
         if execute.lower()=='ui':
             if tool_type=='selenium':
                 iWeb=SeleniumActions()
-                iWeb.open_selenium_browser()
+                iWeb.open_selenium_browser(browserName)
             elif tool_type=='playwright':
                 iWeb=PlayWrightActions()
                 iWeb.open_playwright_browser()

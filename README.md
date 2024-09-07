@@ -23,7 +23,6 @@ To generate flash report open browser and paste url
 To run performance test execute below powershell
  .\framework\perf_test\run_perf.ps1
 
- 
 
-
-
+Framework Flow chart
+FlowChart.drawio.png

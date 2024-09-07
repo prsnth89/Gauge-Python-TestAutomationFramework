@@ -34,3 +34,5 @@ def url_of_the_current_browser():
 @step("Print the current test")
 def print_the_current_test():
     print("-----------current test execution--------------")
+
+

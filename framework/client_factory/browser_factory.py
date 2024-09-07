@@ -1,5 +1,6 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from playwright.async_api import Page,async_playwright
 from playwright.sync_api import Page,sync_playwright
@@ -18,9 +19,9 @@ class BrowserFactory:
 
     def open_selenium_browser(self,browser_type='chrome'):
         if browser_type=='chrome':
-            _driver=webdriver.Chrome(ChromeDriverManager().install())
+            _driver=webdriver.Chrome(service=Service(ChromeDriverManager().install()))
         elif browser_type=='edge':
-            _driver=webdriver.Edge(EdgeChromiumDriverManager().install())
+            _driver=webdriver.Edge(service=Service(EdgeChromiumDriverManager().install()))
         self._driver=_driver
         self._driver.maximize_window
         self._driver.delete_all_cookies

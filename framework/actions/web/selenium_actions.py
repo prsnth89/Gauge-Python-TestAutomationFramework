@@ -5,7 +5,7 @@ from framework.interface.iweb import IWeb
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
-from time import time
+import time
 import os
 
 class SeleniumActions(IWeb, BrowserFactory):
