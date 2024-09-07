@@ -16,10 +16,6 @@ jobs:
           Start-Process -FilePath ./stable.exe -ArgumentList "/silent" -Wait
           $env:PATH += ";$env:ProgramFiles\Gauge\bin"
         shell: powershell
-
-      - name: Print Environment Variables
-        run: Get-ChildItem Env:
-        shell: powershell
           
       - name: Print Gauge Version
         run: |
