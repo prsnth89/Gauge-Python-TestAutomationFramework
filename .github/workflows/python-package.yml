@@ -18,9 +18,13 @@ jobs:
         shell: powershell
 
       - name: Install Gauge
+        run: choco install gauge -y --no-progress
+        shell: powershell
+
+      - name: Add Gauge to PATH
         run: |
-          choco install gauge -y
-          $env:PATH += ";$env:ProgramFiles\Gauge\bin"
+          $env:PATH += ";C:\Program Files\Gauge\bin"
+          echo "PATH=$env:PATH" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8
         shell: powershell
 
       - name: Print Gauge Version
