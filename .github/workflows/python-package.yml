@@ -17,16 +17,6 @@ jobs:
           iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
         shell: powershell
 
-      - name: Uninstall Gauge
-        run: |
-          choco uninstall gauge -y
-        shell: powershell
-
-      - name: Reinstall Gauge
-        run: |
-          choco install gauge -y --no-progress
-        shell: powershell
-
 
       - name: Install Gauge and Python
         run: |
