@@ -12,11 +12,11 @@ jobs:
 
       - name: Install Gauge
         run: |
-          Invoke-WebRequest -Uri https://downloads.gauge.org/stable -OutFile stable.exe
-          Start-Process -FilePath ./stable.exe -ArgumentList "/silent" -Wait
+          Invoke-WebRequest -Uri https://downloads.gauge.org/latest -OutFile gauge-installer.exe
+          Start-Process -FilePath gauge-installer.exe -ArgumentList "/S" -Wait
           $env:PATH += ";$env:ProgramFiles\Gauge\bin"
         shell: powershell
-          
+
       - name: Print Gauge Version
         run: |
           gauge --version
