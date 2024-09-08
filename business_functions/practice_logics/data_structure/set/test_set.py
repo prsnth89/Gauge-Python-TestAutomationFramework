@@ -1,6 +1,6 @@
 test_set=set()  #Sets are unordered collections of unique elements. 
                 #They do not allow duplicate values, and they support mathematical 
-                # set operations like union, intersection, and difference.
+                #Set operations like union, intersection, and difference.
 
 duplicate=[1,1,3,4,3,77]
 test_set.add(5)

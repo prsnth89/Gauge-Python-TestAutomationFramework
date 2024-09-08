@@ -1,3 +1,9 @@
+"""Key Characteristics of Lists in Python:
+Ordered: The elements in a list have a specific order, and this order will not change unless explicitly modified.
+Mutable: Lists can be changed in place (elements can be added, removed, or modified).
+Heterogeneous: Lists can contain elements of different data types (e.g., integers, strings, other lists).
+Dynamic: The size of a list can change dynamically, meaning you can add or remove elements as needed."""
+
 a=[10]*5
 print(a) #create 10 for 5 times
 
@@ -15,3 +21,5 @@ print(duplicates)
 
 duplicates.append(77) #update in last index
 print(duplicates)
+
+

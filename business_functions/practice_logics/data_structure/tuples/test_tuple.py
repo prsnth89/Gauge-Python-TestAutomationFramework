@@ -1,3 +1,8 @@
+"""Ordered: Tuples maintain the order of elements.
+Immutable: Once created, the elements of a tuple cannot be changed.
+Heterogeneous: Tuples can contain elements of different data types (e.g., integers, strings, other tuples).
+Hashable: Tuples can be used as keys in dictionaries (if they contain only immutable elements) because they are hashable."""
+
 person1=(1,'prsnth',32)
 person2=(2,'sruthi',27)
 person3=(3,'john',33)
