@@ -6,6 +6,7 @@ from playwright.async_api import Page,async_playwright
 from playwright.sync_api import Page,sync_playwright
 from framework.interface.iweb import IWeb
 from screeninfo import get_monitors
+import gc
 
 
 class BrowserFactory:
@@ -29,6 +30,7 @@ class BrowserFactory:
 
     def quit_selenium_browser(self):
         self._driver.quit()
+        gc.collect()
 
     def start_playwright_engine(self):
         self._playwright=sync_playwright().start()
@@ -60,6 +62,7 @@ class BrowserFactory:
         self._context.close()
         self._browser.close()
         self.stop_playwright_engine()
+        gc.collect()
 
     def stop_playwright_engine(self):
         self._playwright.stop()

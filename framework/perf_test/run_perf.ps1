@@ -5,7 +5,7 @@ Set-ExecutionPolicy RemoteSigned
 $locustTestScript = ".\framework\perf_test\test_locust.py"
 
 # Define the host URL
-$hostUrl = "http://localhost:5000"
+$hostUrl = "https://reqres.in"
 
 # Run the Locust test using the locust command
 locust -f $locustTestScript --host $hostUrl

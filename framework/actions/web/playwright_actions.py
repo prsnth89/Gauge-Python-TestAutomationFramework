@@ -25,7 +25,7 @@ class PlayWrightActions(IWeb,BrowserFactory):
     def open_browser(self, browser_name):
         self.open_playwright_browser(browser_name)
 
-    def quite_browser(self):
+    def quit_browser(self):
         self.quit_playwright_browser()
 
     def wait_for(self, locator, time_to_wait):

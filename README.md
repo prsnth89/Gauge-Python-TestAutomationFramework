@@ -25,3 +25,11 @@ To run performance test execute below powershell
 
 
 Framework Flow chart
+
+To record playwright in python
+playwright codegen --target python https://example.com
+
+To record in specific browser
+playwright codegen --browser=firefox --target=python https://example.com
+
+

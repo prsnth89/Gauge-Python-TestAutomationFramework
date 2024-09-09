@@ -1,4 +1,4 @@
-# Login scenario
+# Login spec
 ================
 
 ## Test Login
