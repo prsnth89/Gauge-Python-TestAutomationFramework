@@ -21,20 +21,17 @@ jobs:
         run: choco install gauge -y --no-progress
         shell: powershell
         
-      - name: Install Python
-        run: choco install python --version=3.12.5 -y --install-arguments="'/l*v c:\python312_msi_install.log'"
-        shell: powershell
 
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5.2.0
         with:
-          python-version: '3.12.5'
+          python-version: 3.12.5          
 
       - name: Add Gauge to PATH
         run: |
           $gaugePath = "C:\Program Files\Gauge\bin"
           echo "GAUGE_PATH=$gaugePath" >> $env:GITHUB_ENV
-        shell: powershell
+        shell: powershell          
 
       - name: Verify Gauge and Python Installation
         run: |
