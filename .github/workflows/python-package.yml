@@ -17,19 +17,20 @@ jobs:
           iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
         shell: powershell
 
-
-      - name: Install Gauge and Python
-        run: |
-          choco install gauge -y --no-progress
-          choco install python --version=3.12.5 -y --no-progress
+      - name: Install Gauge
+        run: choco install gauge -y --no-progress
+             choco install python --version=3.12.5
         shell: powershell
 
-      - name: Add Gauge and Python to PATH
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.12.5'
+
+      - name: Add Gauge to PATH
         run: |
           $gaugePath = "C:\Program Files\Gauge\bin"
-          $pythonPath = ";C:\Python312\Scripts;C:\Python312;"
-          $env:PATH += ";$gaugePath;$pythonPath"
-          echo "PATH=$env:PATH" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8
+          echo "GAUGE_PATH=$gaugePath" >> $env:GITHUB_ENV
         shell: powershell
 
       - name: Verify Gauge and Python Installation
@@ -47,8 +48,7 @@ jobs:
         shell: powershell
 
       - name: Check Runner IP Address
-        run: |
-          curl ifconfig.me
+        run: curl ifconfig.me
         shell: bash
 
       - name: Set Gauge Environment Variables
@@ -65,16 +65,16 @@ jobs:
         run: gauge run ./business_functions/specs_api/
         shell: powershell
         
-      - name: Upload a Build Artifact
-        if: always()
-        uses: actions/upload-artifact@v4
+      - name: Upload logs
+        if: always() # Ensure this step runs even if previous steps fail
+        uses: actions/upload-artifact@v3
         with:
-            name: Logs
-            path: .\logs
+          name: test-logs
+          path: logs/
 
       - name: Upload test results
         if: always() # Ensure this step runs even if previous steps fail
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: test-results
           path: reports/
