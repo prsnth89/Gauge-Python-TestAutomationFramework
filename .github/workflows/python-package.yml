@@ -56,7 +56,3 @@ jobs:
         with:
           name: test-results
           path: reports/
-
-      - name: Debug Network Ports
-        run: netstat -a -n | findstr 1100
-        shell: powershell
