@@ -19,7 +19,10 @@ jobs:
 
       - name: Install Gauge
         run: choco install gauge -y --no-progress
-             choco install python --version=3.12.5
+        shell: powershell
+        
+      - name: Install Python
+        run: choco install python --version=3.12.5 -y --no-progress
         shell: powershell
 
       - name: Setup Python
