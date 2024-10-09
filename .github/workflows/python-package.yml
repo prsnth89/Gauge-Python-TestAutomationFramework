@@ -20,7 +20,8 @@ jobs:
 
       - name: Install Gauge and Python
         run: |
-          choco install gauge python -y --no-progress
+          choco install gauge -y --no-progress
+          choco install python --version=3.12.5 -y --no-progress
         shell: powershell
 
       - name: Add Gauge and Python to PATH
