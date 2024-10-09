@@ -27,18 +27,6 @@ jobs:
         with:
           python-version: 3.12.5          
 
-      - name: Add Gauge to PATH
-        run: |
-          $gaugePath = "C:\Program Files\Gauge\bin"
-          echo "GAUGE_PATH=$gaugePath" >> $env:GITHUB_ENV
-        shell: powershell          
-
-      - name: Verify Gauge and Python Installation
-        run: |
-          gauge --version
-          python --version
-        shell: powershell
-
       - name: Install Python Packages
         run: |
           python -m pip install --upgrade pip
@@ -51,18 +39,8 @@ jobs:
         run: curl ifconfig.me
         shell: bash
 
-      - name: Set Gauge Environment Variables
-        run: |
-          echo "GAUGE_HOST=localhost" >> $env:GITHUB_ENV
-          echo "GAUGE_PORT=6000" >> $env:GITHUB_ENV
-        shell: powershell
-
-      - name: Wait before running tests
-        run: Start-Sleep -Seconds 10
-        shell: powershell
-
       - name: Run tests
-        run: gauge run ./business_functions/specs_api/
+        run: C:\"Program Files"\gauge\bin\gauge.exe run ./business_functions/specs_api/
         shell: powershell
         
       - name: Upload logs
