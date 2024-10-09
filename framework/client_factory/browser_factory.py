@@ -5,7 +5,6 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from playwright.async_api import Page,async_playwright
 from playwright.sync_api import Page,sync_playwright
 from framework.interface.iweb import IWeb
-from screeninfo import get_monitors
 import gc
 
 
