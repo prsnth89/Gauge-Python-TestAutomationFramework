@@ -26,7 +26,7 @@ jobs:
       - name: Add Gauge and Python to PATH
         run: |
           $gaugePath = "C:\Program Files\Gauge\bin"
-          $pythonPath = "C:\Python39\Scripts"
+          $pythonPath = ";C:\Python312\Scripts;C:\Python312;"
           $env:PATH += ";$gaugePath;$pythonPath"
           echo "PATH=$env:PATH" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8
         shell: powershell
