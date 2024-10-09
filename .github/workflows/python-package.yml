@@ -63,6 +63,13 @@ jobs:
       - name: Run tests
         run: gauge run ./business_functions/specs_api/
         shell: powershell
+        
+      - name: Upload logs
+        if: always() # Ensure this step runs even if previous steps fail
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-logs
+          path: logs/
 
       - name: Upload test results
         if: always() # Ensure this step runs even if previous steps fail
