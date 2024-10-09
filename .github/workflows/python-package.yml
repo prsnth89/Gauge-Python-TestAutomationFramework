@@ -22,7 +22,7 @@ jobs:
         shell: powershell
         
       - name: Install Python
-        run: choco install python --version=3.12.5 -y --no-progress
+        run: choco install python --version=3.12.5 -y --install-arguments="'/l*v c:\python312_msi_install.log'"
         shell: powershell
 
       - name: Setup Python
