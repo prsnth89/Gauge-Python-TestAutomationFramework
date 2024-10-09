@@ -66,7 +66,7 @@ jobs:
         
       - name: Upload logs
         if: always() # Ensure this step runs even if previous steps fail
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v1
         with:
           name: test-logs
           path: logs/
