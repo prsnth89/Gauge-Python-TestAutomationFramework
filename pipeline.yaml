@@ -17,25 +17,14 @@ jobs:
           iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
         shell: powershell
 
+      - name: Install Gauge
+        run: choco install gauge -y --no-progress
+        shell: powershell 
 
-      - name: Install Gauge and Python
-        run: |
-          choco install gauge python -y --no-progress
-        shell: powershell
-
-      - name: Add Gauge and Python to PATH
-        run: |
-          $gaugePath = "C:\Program Files\Gauge\bin"
-          $pythonPath = "C:\Python39\Scripts"
-          $env:PATH += ";$gaugePath;$pythonPath"
-          echo "PATH=$env:PATH" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8
-        shell: powershell
-
-      - name: Verify Gauge and Python Installation
-        run: |
-          gauge --version
-          python --version
-        shell: powershell
+      - name: Setup Python
+        uses: actions/setup-python@v5.2.0
+        with:
+          python-version: 3.12.5          
 
       - name: Install Python Packages
         run: |
@@ -45,28 +34,20 @@ jobs:
           playwright install
         shell: powershell
 
-      - name: Check Runner IP Address
-        run: |
-          curl ifconfig.me
-        shell: bash
-
-      - name: Set Gauge Environment Variables
-        run: |
-          echo "GAUGE_HOST=192.30.252.0" >> $env:GITHUB_ENV
-          echo "GAUGE_PORT=22" >> $env:GITHUB_ENV
-        shell: powershell
-
-      - name: Wait before running tests
-        run: Start-Sleep -Seconds 10
-        shell: powershell
-
       - name: Run tests
-        run: gauge run ./business_functions/specs_api/
+        run: C:\"Program Files"\gauge\bin\gauge.exe run ./business_functions/specs_api/
         shell: powershell
+        
+      - name: Upload logs
+        if: always() # Ensure this step runs even if previous steps fail
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-logs
+          path: logs/
 
       - name: Upload test results
         if: always() # Ensure this step runs even if previous steps fail
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: test-results
           path: reports/
