@@ -32,4 +32,5 @@ playwright codegen --target python https://example.com
 To record in specific browser
 playwright codegen --browser=firefox --target=python https://example.com
 
+Automatically run pipeline whenever new commit happens
 
