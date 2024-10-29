@@ -10,8 +10,6 @@ tags: logintest
 
    |user_name    |password    |
    |-------------|------------|
-   |std          |std1        |
-   |test         |test2       |
    |standard_user|secret_sauce|
 
 * Print the current test
