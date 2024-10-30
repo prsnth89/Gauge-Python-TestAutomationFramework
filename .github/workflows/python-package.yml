@@ -40,7 +40,7 @@ jobs:
         shell: bash
 
       - name: Run tests
-        run: C:\"Program Files"\gauge\bin\gauge.exe run ./business_functions/specs_api/
+        run: C:\"Program Files"\gauge\bin\gauge.exe run ./business_functions/specs/
         shell: powershell
         
       - name: Upload logs
