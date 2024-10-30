@@ -19,7 +19,7 @@ class Hooks:
     iWeb=None
     @before_scenario
     def before_scenario_execution(self):
-        if execute.lower()=='ui':
+        if execute.lower()=='ui' or execute.lower()=='both':
             if tool_type=='selenium':
                 iWeb=SeleniumActions()
                 iWeb.open_selenium_browser(browserName)
@@ -36,7 +36,7 @@ class Hooks:
     @after_step
     def after_step(context):
         #path = "\html-report\demo\features\specs"
-        if execute.lower()=='ui':
+        if execute.lower()=='ui' or execute.lower()=='both':
             print("Step Name is - ", context._ExecutionContext__step.text)
             print("Failing status is - ", context._ExecutionContext__step._Step__is_failing)
         elif execute.lower()=='api':
@@ -45,7 +45,7 @@ class Hooks:
 
     @after_scenario
     def quit_browser(context):
-        if execute.lower()=='ui':
+        if execute.lower()=='ui' or execute.lower()=='both':
             print("Scenario Name is - ", context._ExecutionContext__scenario.name)
             print("Tag Name is - ", context._ExecutionContext__scenario.tags)
             print("Failing status is - ", context._ExecutionContext__scenario.is_failing)

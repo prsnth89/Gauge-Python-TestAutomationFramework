@@ -34,8 +34,12 @@ jobs:
           playwright install
         shell: powershell
 
-      - name: Run tests
-        run: C:\"Program Files"\gauge\bin\gauge.exe run ./business_functions/specs/
+      - name: Run UI tests
+        run: C:\"Program Files"\gauge\bin\gauge.exe run ./business_functions/specs/ --tags positivetest,uitest
+        shell: powershell
+
+      - name: Run API tests
+        run: C:\"Program Files"\gauge\bin\gauge.exe run ./business_functions/specs/specs_api --tags apitest
         shell: powershell
         
       - name: Upload logs

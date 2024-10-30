@@ -3,7 +3,7 @@
 
 ## Test Login
 -----------
-tags: test
+tags: positivetest, uitest
 
 * Login to sauce demo page
 * Enter "standard_user" and "secret_sauce"
@@ -12,7 +12,7 @@ tags: test
 
 ## Test Login Invalid
 ---------------------
-tags: testinvalid
+tags: negativetest, uitest
 
 * Login to sauce demo page
 * Enter "standard_user" and "secret_sauce1"

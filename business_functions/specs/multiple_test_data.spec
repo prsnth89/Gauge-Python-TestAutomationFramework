@@ -6,7 +6,7 @@ Concept: Print step
 
 ## Multiple Tests
 -----------------------
-tags: logintest
+tags: logintest,positivetest, uitest
 
    |user_name    |password    |
    |-------------|------------|
@@ -21,6 +21,7 @@ tags: logintest
 
 ## Multiple Tests2
 -----------------------
-tags: LoginTest2
+tags: LoginTest2,positivetest, uitest
+
 * Print the current test
 * Login to sauce demo page

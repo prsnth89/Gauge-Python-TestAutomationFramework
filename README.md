@@ -12,6 +12,9 @@ gauge run --parallel -n4 --env='default' .\specs\
 To run failed test case
 gauge run --failed
 
+To run test case based on tags
+gauge run .\business_functions\specs_api --tags positivetest
+
 Rerun failure with max iteration count
 gauge run --max-retries-count=4
 
