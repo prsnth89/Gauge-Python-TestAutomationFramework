@@ -38,18 +38,32 @@ jobs:
         run: C:\"Program Files"\gauge\bin\gauge.exe run ./business_functions/specs/ --tags positivetest,uitest
         shell: powershell
 
-      - name: Run API tests
-        run: C:\"Program Files"\gauge\bin\gauge.exe run ./business_functions/specs/specs_api --tags apitest
-        shell: powershell
-        
-      - name: Upload logs
+      - name: Upload UI logs
         if: always() # Ensure this step runs even if previous steps fail
         uses: actions/upload-artifact@v3
         with:
           name: test-logs
           path: logs/
 
-      - name: Upload test results
+      - name: Upload UI test results
+        if: always() # Ensure this step runs even if previous steps fail
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: reports/
+
+      - name: Run API tests
+        run: C:\"Program Files"\gauge\bin\gauge.exe run ./business_functions/specs/specs_api --tags apitest
+        shell: powershell
+        
+      - name: Upload API logs
+        if: always() # Ensure this step runs even if previous steps fail
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-logs
+          path: logs/
+
+      - name: Upload API test results
         if: always() # Ensure this step runs even if previous steps fail
         uses: actions/upload-artifact@v3
         with:
