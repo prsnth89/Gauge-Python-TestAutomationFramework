@@ -65,12 +65,12 @@ jobs:
         if: always() # Ensure this step runs even if previous steps fail
         uses: actions/upload-artifact@v3
         with:
-          name: test-logs
+          name: api-test-logs
           path: logs/
 
       - name: Upload api test results
         if: always() # Ensure this step runs even if previous steps fail
         uses: actions/upload-artifact@v3
         with:
-          name: test-results
+          name: api-test-results
           path: reports/
