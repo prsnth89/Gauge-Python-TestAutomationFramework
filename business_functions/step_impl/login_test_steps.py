@@ -15,6 +15,7 @@ def login_to_sauce_demo_page():
 def enter_user_pwd(user_name, password):
     global login_page
     login_page=LoginPage()
+    login_page.wait_time(5)
     login_page.login(user_name,password)
 
 @step("Click Login to sauce demo page")
@@ -34,5 +35,4 @@ def url_of_the_current_browser():
 @step("Print the current test")
 def print_the_current_test():
     print("-----------current test execution--------------")
-
 

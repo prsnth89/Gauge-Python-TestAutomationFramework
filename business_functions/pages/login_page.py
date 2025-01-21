@@ -9,6 +9,9 @@ class LoginPage:
     def __init__(self):
         self.iWeb=data.scenario.iweb
 
+    def wait_time(self,seconds):
+        self.iWeb.wait_time(seconds)
+
     def login(self, user_name, password):
         self.iWeb.find(LoginPageObjects.txtUsername).type(user_name)
         self.iWeb.find(LoginPageObjects.txtPassword).type(password)

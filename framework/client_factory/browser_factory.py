@@ -2,6 +2,7 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
+from selenium.webdriver.edge.service import Service as EdgeService
 from playwright.async_api import Page,async_playwright
 from playwright.sync_api import Page,sync_playwright
 from framework.interface.iweb import IWeb
@@ -26,6 +27,34 @@ class BrowserFactory:
         self._driver.maximize_window
         self._driver.delete_all_cookies
         self.tabs.update({'default':self._driver.current_window_handle})
+
+    def open_mob_selenium_browser(self,browser_type='chrome'):
+        _driver=None
+        if browser_type=='chrome':
+            mobile_emulation = self._get_mobile_emulation("iphonex")
+            options = webdriver.ChromeOptions()
+            options.add_experimental_option("mobileEmulation", mobile_emulation)
+            _driver=webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=options)
+        elif browser_type=='edge':
+            mobile_emulation = self._get_mobile_emulation("nexus")
+            options = webdriver.EdgeOptions()
+            options.add_experimental_option("mobileEmulation", mobile_emulation)
+            _driver=webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()),options=options)
+        self._driver=_driver
+        self._driver.maximize_window
+        self._driver.delete_all_cookies
+        self.tabs.update({'default':self._driver.current_window_handle})
+
+    def _get_mobile_emulation(self, device_name):
+        devices = {
+            'iphonex': {"deviceName": "iPhone X"},
+            'nexus': {"deviceName": "Nexus 5"}
+        }
+        return devices.get(device_name)
+    
+    def quit_mob_selenium_browser(self):
+        self._driver.quit()
+        gc.collect()
 
     def quit_selenium_browser(self):
         self._driver.quit()
