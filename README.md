@@ -7,9 +7,9 @@ This has two parts
 1) framework and 
 2) business functions
 
-1) framework- contains all the resuable libraries, it supports multiple tools -playwright, selenium, mobile emulator, api etc.,
+framework- contains all the resuable libraries, it supports multiple tools -playwright, selenium, mobile emulator, api etc.,
 
-2)business functions- all the application specific tests are written inside this, internally it use the framework and helps in designing testcase easily and effectively with less maintenance
+business functions- all the application specific tests are written inside this, internally it use the framework and helps in designing testcase easily and effectively with less maintenance
 
 hooks - precondition/postcondition to run the test
 pageobjects-locators will be mentioned based on each page
