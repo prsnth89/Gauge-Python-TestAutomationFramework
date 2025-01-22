@@ -3,6 +3,20 @@
 Install all the dependencies
 pip install -r requirements.txt
 
+This has two parts
+framework and business functions
+framework- contains all the resuable libraries, it supports multiple tools -playwright, selenium, mobile emulator, api etc.,
+
+business functions- all the application specific tests are written inside this, internally it use the framework and helps in designing testcase easily and effectively with less maintenance
+
+hooks - precondition/postcondition to run the test
+pageobjects-locators will be mentioned based on each page
+page-contains application specific functions which helps to design testcase
+specs-helps to design test case in simple english
+step_impl-all the tests written in specs will be converted into logic via step implmentation
+env-default- all configurations were managed in this file
+             
+
 To run gauge in sequential, open Terminal and give the following command
 gauge run  --env='default' .\specs\
 
