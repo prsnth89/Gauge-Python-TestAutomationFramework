@@ -1,10 +1,11 @@
-# Get Personal Details
+# Get Poetry DB Details
 ======================
 
-## Get the personal details of a person
+## Get the details from poetry db
 ----------------------------------------
 
 tags: apitest, positivetest
 
-* Get the personal detail
+* Get the poetry db details
 * Validate response code "200"
+* Validate input vs output json response

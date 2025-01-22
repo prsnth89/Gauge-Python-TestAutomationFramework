@@ -1,4 +1,6 @@
 from getgauge.python import step
+from business_functions.hooks.hooks import Hooks
+from getgauge.python import data_store as data
 from business_functions.pages.search_page import *
 from business_functions.pages.search_results_page import *
 from business_functions.pages.star_craft2_page import *
