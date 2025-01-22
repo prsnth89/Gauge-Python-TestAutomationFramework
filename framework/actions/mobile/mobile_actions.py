@@ -4,9 +4,11 @@ from framework.client_factory.browser_factory import BrowserFactory
 from framework.interface.iweb import IWeb
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import os
+from uuid import uuid1
 
 class MobileActions(IWeb, BrowserFactory):
     _element: WebElement=None
@@ -63,10 +65,16 @@ class MobileActions(IWeb, BrowserFactory):
    
     def take_screenshot(self, path):
         image =self._driver.get_screenshot_as_png()
-        file_name=os.path.join(os.getenv("gauge_reports_dir")+path,"screenshot-{0}.png".format(uuid1().int))
+        file_name=os.path.join("screenshot-{0}.png".format(uuid1().int))
         file=open(file_name,"wb")
         file.write(image)
         return os.path.basename(file_name)
     
     def get_current_url(self):
         return self._driver.current_url
+    
+    def enter_by_keyboard(self):
+        self._element.send_keys(Keys.ENTER)
+
+    def scroll_down(self):
+        self._driver.execute_script("window.scrollBy(0, 1000)")

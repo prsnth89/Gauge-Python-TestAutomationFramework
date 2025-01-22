@@ -5,6 +5,7 @@ from framework.interface.iweb import IWeb
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
 import time
 import os
 
@@ -63,3 +64,9 @@ class SeleniumActions(IWeb, BrowserFactory):
     
     def get_current_url(self):
         return self._driver.current_url
+    
+    def enter_by_keyboard(self):
+        self._element.send_keys(Keys.ENTER)
+
+    def scroll_down(self):
+        self._driver.execute_script("window.scrollBy(0, 1000)")

@@ -52,3 +52,13 @@ class IWeb:
     def get_current_url(self):
         NotImplementedError
         return self
+    
+    @abstractmethod
+    def enter_by_keyboard(self):
+        NotImplementedError
+        return self
+    
+    @abstractmethod
+    def scroll_down(self):
+        NotImplementedError
+        return self
